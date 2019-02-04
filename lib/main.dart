@@ -35,8 +35,13 @@ class _HomeState extends State<Home> {
           new ListTile(
             title: new RaisedButton(
                 child: new Text('Send to next screen'),
-                onPressed: null
-            ),
+                onPressed: () {
+                  var router = new MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return new SecondScreen();
+                      });
+                  Navigator.of(context).push(router);
+                }),
           )
         ],
       ),
@@ -52,6 +57,11 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return new Scaffold(
+      appBar: new AppBar(
+        backgroundColor: Colors.red,
+        title: new Text('Second screen'),
+      ),
+    );
   }
 }

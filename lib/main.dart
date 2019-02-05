@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   var router = new MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return new SecondScreen();
+                        return new SecondScreen(name: _nameFieldController.text);
                       });
                   Navigator.of(context).push(router);
                 }),
@@ -50,6 +50,10 @@ class _HomeState extends State<Home> {
 }
 
 class SecondScreen extends StatefulWidget {
+  final String name;
+
+  SecondScreen({Key key, this.name}) : super (key: key);
+
   @override
   _SecondScreenState createState() => _SecondScreenState();
 }
@@ -62,6 +66,9 @@ class _SecondScreenState extends State<SecondScreen> {
         backgroundColor: Colors.red,
         title: new Text('Second screen'),
       ),
+      body: new ListTile(
+        title: new Text('${widget.name}')
+      )
     );
   }
 }
